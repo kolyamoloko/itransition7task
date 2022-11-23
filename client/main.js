@@ -10,6 +10,9 @@ startForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const username = nameInput.value;
     const code = codeInput.value;
+    socket.emit("joinGAme", username, code,  () => {
+
+    });
 })
 
 

@@ -17,3 +17,5 @@ app.get("/ping",(req, res) => {
 server.listen(port, () => {
     console.log("server running on port " + port)
 });
+
+startSocketServer(server);
