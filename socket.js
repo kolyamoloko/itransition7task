@@ -4,9 +4,9 @@ import { Server } from "socket.io";
 const startSocketServer = (server) => {
 	const io = new Server(server);
 	const activeGames = new Map();
-	console.log('hello world');
 
 	io.on("connection", (socket) => {
+		console.log("Connected socket " + socket.id);
 		socket.on("disconnecting", () => {
 			// Terminate games and disconnect all players if
 			// disconnecting socket was participating
@@ -55,6 +55,7 @@ const startSocketServer = (server) => {
 					activeGames.delete(otherCode);
 				}
 			});
+			// Join to new/existing game room and send updated player config
 			socket.join(code);
 			io.to(code).emit("update", game.currentState);
 			callback(true, playerNum);

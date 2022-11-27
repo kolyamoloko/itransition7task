@@ -55,7 +55,6 @@ socket.on("update", updateGame);
 socket.on("terminated", updateGame(null));
 
 function updateGame(gameState) {
-	console.log("updateGame", gameState);
 	clearBoard();
 
 	if (!gameState) {
